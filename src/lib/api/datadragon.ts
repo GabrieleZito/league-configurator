@@ -13,9 +13,12 @@ export async function getChampionList(): Promise<ChampionSummary[]> {
     return Object.values(res.data.data);
 }
 
-export async function getChampionDetails(name: string): Promise<ChampionDetails[]> {
-    const res = await api.get<DDResponse<ChampionDetails>>(
-        `/${version}/data/${language}/champion/${name}.json`,
-    );
-    return Object.values(res.data.data);
+export async function getChampionDetails(name: string): Promise<ChampionDetails | null> {
+    try {
+        const res = await api.get<DDResponse<ChampionDetails>>(`/${version}/data/${language}/champion/${name}.json`);
+        return Object.values(res.data.data)[0];
+    } catch (error) {
+        console.log("Errore");
+        return null;
+    }
 }
