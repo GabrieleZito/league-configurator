@@ -1,10 +1,18 @@
-import { getChampionDetails } from "@/lib/api/datadragon";
+import { getChampionDetails, getChampionList } from "@/lib/api/datadragon";
 import { version } from "@/lib/const/const";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 interface Props {
     championId: string;
+}
+
+export async function generateStaticParams() {
+    const champs = await getChampionList();
+
+    return champs.map((c) => ({
+        championId: c.id,
+    }));
 }
 
 export default async function page({ params }: { params: Props }) {

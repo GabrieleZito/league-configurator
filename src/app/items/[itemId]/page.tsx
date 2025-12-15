@@ -1,4 +1,4 @@
-import { getItemDetail } from "@/lib/api/datadragon";
+import { getItemDetail, getItemList } from "@/lib/api/datadragon";
 import { version } from "@/lib/const/const";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,10 +7,18 @@ interface Props {
     params: { itemId: string };
 }
 
+export async function generateStaticParams() {
+    const items = await getItemList();
+
+    return items.map((c) => ({
+        itemId: c.id,
+    }));
+}
+
 export default async function ItemDetailPage({ params }: Props) {
     const { itemId } = await params;
     const item = await getItemDetail(itemId);
-    console.log(item);
+    //console.log(item);
 
     return (
         <div className="mx-auto w-4xl px-6 py-12">
