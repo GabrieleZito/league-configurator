@@ -68,9 +68,7 @@ export async function getItemList(): Promise<Item[]> {
         ...item,
         id,
     }));
-    items = items.filter(
-        (i) => i.gold.purchasable && (i.maps[11] || i.maps[12]) ,
-    );
+    items = items.filter((i) => i.gold.purchasable && (i.maps[11] || i.maps[12]));
     return items;
 }
 

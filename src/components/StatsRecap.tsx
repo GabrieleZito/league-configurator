@@ -1,5 +1,3 @@
-// components/build/StatsRecap.tsx
-
 import { Item } from "@/types/datadragon";
 
 export default function StatsRecap({ build }: { build: (Item | null)[] }) {
@@ -14,7 +12,7 @@ export default function StatsRecap({ build }: { build: (Item | null)[] }) {
 
     return (
         <div className="mt-6">
-            <h3 className="mb-2 text-lg font-semibold">Stats recap</h3>
+            <h3 className="mb-2 text-lg font-semibold">Build recap</h3>
             <div className="grid grid-cols-4 gap-2 text-sm">
                 {Object.entries(totalStats).map(([stat, value]) => (
                     <div key={stat} className="rounded bg-zinc-100 p-2 dark:bg-zinc-800">

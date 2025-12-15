@@ -5,7 +5,7 @@ async function ChampionsPage() {
     const championList = await getChampionList();
 
     return (
-        <main className="flex max-w-6xl flex-row flex-wrap justify-center">
+        <main className="flex w-6xl flex-row flex-wrap">
             <ChampionList championList={championList} />
         </main>
     );
