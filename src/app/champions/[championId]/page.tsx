@@ -22,7 +22,7 @@ export default async function page({ params }: { params: Props }) {
     if (!champion) {
         return notFound();
     }
-
+    console.log(champion);
     return (
         <div className="mx-auto max-w-6xl px-6 py-12">
             {/* HERO */}
