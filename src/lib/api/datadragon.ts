@@ -64,10 +64,14 @@ export async function getItemList(): Promise<Item[]> {
         next: { revalidate: 3600 },
     });
     const json = (await res.json()) as DDResponse<Item>;
-    return Object.entries(json.data).map(([id, item]) => ({
+    let items = Object.entries(json.data).map(([id, item]) => ({
         ...item,
         id,
     }));
+    items = items.filter(
+        (i) => i.gold.purchasable && (i.maps[11] || i.maps[12]) ,
+    );
+    return items;
 }
 
 export async function getItemDetail(id: string): Promise<Item> {
