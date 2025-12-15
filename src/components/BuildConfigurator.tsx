@@ -30,13 +30,10 @@ function BuildConfigurator({ items }: Props) {
 
     return (
         <div className="flex flex-col gap-8">
-            {/* TOP */}
             <div className="rounded-xl bg-white p-6 shadow dark:bg-zinc-900">
-                <BuildSlots build={build} onDrop={addItem} onRemove={removeItem}/>
+                <BuildSlots build={build} onDrop={addItem} onRemove={removeItem} />
                 <StatsRecap build={build} />
             </div>
-
-            {/* BOTTOM */}
             <ItemList items={items} />
         </div>
     );

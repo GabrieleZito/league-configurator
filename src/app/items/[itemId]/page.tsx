@@ -18,7 +18,7 @@ export async function generateStaticParams() {
 export default async function ItemDetailPage({ params }: Props) {
     const { itemId } = await params;
     const item = await getItemDetail(itemId);
-    console.log(item);
+    //console.log(item);
 
     return (
         <div className="mx-auto w-4xl px-6 py-12">
