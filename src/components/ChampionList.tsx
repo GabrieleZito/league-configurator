@@ -7,8 +7,32 @@ import ChampionCard from "./ChampionCard";
 function ChampionList({ championList }: { championList: ChampionSummary[] }) {
     const [selectedChamp, setSelectedChamp] = useState<ChampionSummary | null>(null);
     const [search, setSearch] = useState<string>("");
+    const [role, setRole] = useState<string>("");
+    const [order, setOrder] = useState<string>("ASC");
 
-    const filteredChamps = championList.filter((c) => c.name.toLowerCase().includes(search.toLowerCase()));
+    const tags: Set<string> = championList.reduce((set, c) => {
+        if (c.tags && c.tags.length > 0) {
+            c.tags.forEach((element) => {
+                set.add(element);
+            });
+        }
+        return set;
+    }, new Set<string>());
+
+    const filteredChamps = championList.filter((c) => {
+        const matchSearch = c.name.toLowerCase().includes(search.toLowerCase());
+        const matchRole = !role || c.tags.includes(role);
+        return matchSearch && matchRole;
+    });
+
+    filteredChamps.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+
+        if (nameA < nameB) return order === "ASC" ? -1 : 1;
+        if (nameA > nameB) return order === "ASC" ? 1 : -1;
+        return 0;
+    });
 
     return (
         <>
@@ -21,23 +45,24 @@ function ChampionList({ championList }: { championList: ChampionSummary[] }) {
                         onChange={(e) => setSearch(e.target.value)}
                     />
                     <div className="flex flex-row gap-2">
-                        <select className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-white">
-                            <option value="">Tutti i ruoli</option>
-                            <option value="Fighter">Fighter</option>
-                            <option value="Mage">Mage</option>
-                            <option value="Assassin">Assassin</option>
-                            <option value="Tank">Tank</option>
-                            <option value="Marksman">Marksman</option>
-                            <option value="Support">Support</option>
+                        <select
+                            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-white"
+                            onChange={(e) => setOrder(e.target.value)}
+                        >
+                            <option value="">Ordine</option>
+                            <option value="ASC">A → Z</option>
+                            <option value="DESC">Z → A</option>
                         </select>
-                        <select className="w-full  rounded-lg border border-zinc-300 bg-white px-4 py-2 focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-white">
+                        <select
+                            className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-white"
+                            onChange={(e) => setRole(e.target.value)}
+                        >
                             <option value="">Tutti i ruoli</option>
-                            <option value="Fighter">Fighter</option>
-                            <option value="Mage">Mage</option>
-                            <option value="Assassin">Assassin</option>
-                            <option value="Tank">Tank</option>
-                            <option value="Marksman">Marksman</option>
-                            <option value="Support">Support</option>
+                            {Array.from(tags).map((t) => (
+                                <option key={t} value={t}>
+                                    {t}
+                                </option>
+                            ))}
                         </select>
                     </div>
                 </div>
