@@ -12,9 +12,14 @@ function ChampionList({ championList }: { championList: ChampionSummary[] }) {
 
     return (
         <>
-            <div className="flex flex-col gap-6 w-full">
-                <input type="text" onChange={(e) => setSearch(e.target.value)} />
-                <div className="flex flex-row flex-wrap justify-center gap-4 ">
+            <div className="flex w-full flex-col gap-6">
+                <input
+                    type="text"
+                    placeholder="Cerca un campione..."
+                    className="w-full rounded-lg border border-zinc-300 px-4 py-2 focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:placeholder-zinc-400"
+                    onChange={(e) => setSearch(e.target.value)}
+                />
+                <div className="flex flex-row flex-wrap justify-center gap-4">
                     {filteredChamps.map((c) => (
                         <div key={c.id} onClick={() => setSelectedChamp(c)} className="cursor-pointer hover:scale-105">
                             <Image
