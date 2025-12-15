@@ -77,7 +77,7 @@ export default async function page({ params }: { params: Props }) {
                 {/* Spells */}
                 <div className="grid gap-6 sm:grid-cols-2">
                     {champion.spells.map((spell) => (
-                        <div key={spell.id} className="flex gap-4">
+                        <div key={spell.id} className="flex items-start gap-4">
                             <Image
                                 src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${spell.image.full}`}
                                 width={48}

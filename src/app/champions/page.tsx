@@ -1,5 +1,5 @@
 import { getChampionList } from "@/lib/api/datadragon";
-import ChampionList from "./_components/ChampionList";
+import ChampionList from "../../components/ChampionList";
 
 async function ChampionsPage() {
     const championList = await getChampionList();
