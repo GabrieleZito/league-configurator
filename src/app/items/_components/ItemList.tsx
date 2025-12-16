@@ -23,7 +23,7 @@ function ItemList({ itemlist }: Props) {
             />
             <div className="flex max-w-6xl flex-row flex-wrap justify-center gap-4 pb-10">
                 {filteredItems.map((i) => (
-                    <div key={i.id}>
+                    <div key={i.id} draggable onDragStart={(e) => e.dataTransfer.setData("item", JSON.stringify(i))}>
                         <Link href={`/items/${i.id}`}>
                             <Image
                                 src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${i.image.full}`}

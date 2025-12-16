@@ -3,8 +3,9 @@ import { Item } from "@/types/datadragon";
 import { useState } from "react";
 import BuildSlots from "./BuildSlots";
 import StatsRecap from "./StatsRecap";
-import ItemList from "./ItemList";
+//import ItemList from "./ItemList";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import ItemList from "@/app/items/_components/ItemList";
 
 interface Props {
     items: Item[];
@@ -41,7 +42,7 @@ function BuildConfigurator({ items }: Props) {
     const currentBuild = builds[currentBuildIndex];
 
     return (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 w-6xl">
             <div className="rounded-xl bg-white p-6 shadow dark:bg-zinc-900">
                 {/* Selettore build */}
                 <div className="mb-4 flex gap-4">
@@ -66,7 +67,7 @@ function BuildConfigurator({ items }: Props) {
                 <StatsRecap build={currentBuild} />
             </div>
 
-            <ItemList items={items} />
+            <ItemList itemlist={items} />
         </div>
     );
 }
