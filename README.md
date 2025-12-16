@@ -22,3 +22,9 @@ Builds Page
 **API**: DataDragon (Riot)
 
 **Storage**: Local Storage
+
+---
+- Server components usati per effettuare le chiamate api 
+- Client components per renderizzare componenti che richiedono interattività
+- route di campioni e items generate staticamente con useStaticParams
+---
