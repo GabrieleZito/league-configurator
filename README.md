@@ -2,6 +2,14 @@
 
 Voglio una piattaforma in cui poter trovare tutte le informazioni che mi servono su League of Legends, accedere alle abilità dei campioni e alle statistiche degli oggetti in modo facile e poter provare la mia build prima della prossima partita.
 
+Features:
+- Ricerca di campioni per nome, ruolo
+- Ricerca di item per nome, categoria, statistiche
+- Build configurator
+  - 6 items
+  - Restrizione sui gruppi di item non compatibili
+  - salvataggio di fino a 3 build in LocalStorage 
+
 ## Wireframe
 
 Home Page
@@ -17,7 +25,9 @@ Builds Page
 ![home](./public/builds.png)
 
 ## Tech stack
-**Framework**: NextJS
+**Framework**: NextJS + Typescript
+
+**Styling**: Tailwind
 
 **API**: DataDragon (Riot)
 
