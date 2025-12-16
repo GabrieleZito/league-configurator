@@ -1,5 +1,6 @@
 import { getItemDetail, getItemList } from "@/lib/api/datadragon";
-import { version } from "@/lib/const/const";
+import { STAT_LABELS, version } from "@/lib/const/const";
+import { ItemStats } from "@/types/datadragon";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -65,7 +66,7 @@ export default async function ItemDetailPage({ params }: Props) {
                     <div className="grid grid-cols-2 gap-4">
                         {Object.entries(item.stats).map(([stat, value]) => (
                             <div key={stat} className="rounded bg-zinc-700 p-3 text-sm">
-                                <span className="font-medium">{stat}</span>: {value}
+                                <span className="font-medium">{STAT_LABELS[stat as keyof ItemStats] ?? stat}</span>: {value}
                             </div>
                         ))}
                     </div>

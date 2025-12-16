@@ -80,7 +80,8 @@ export interface Item {
     specialRecipe?: number;
     requiredChampion?: string;
     requiredAlly?: string;
-    stats: Record<string, number>;
+    //stats: Record<string, number>;
+    stats: ItemStats;
 }
 
 interface Info {
@@ -164,7 +165,7 @@ interface Passive {
     image: Image;
 }
 
-interface ItemStats {
+export interface ItemStats {
     FlatHPPoolMod: number;
     rFlatHPModPerLevel: number;
     FlatMPPoolMod: number;

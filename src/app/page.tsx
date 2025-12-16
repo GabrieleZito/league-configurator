@@ -7,7 +7,7 @@ export default function Home() {
         },
         {
             name: "Items",
-            description: "In questa sezione puoi consultare tutti gli oggetti del gioco, con statistiche, costi e build consigliate.",
+            description: "In questa sezione puoi consultare tutti gli oggetti del gioco, con statistiche e costi.",
         },
         {
             name: "Builds",

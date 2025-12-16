@@ -1,4 +1,5 @@
-import { Item } from "@/types/datadragon";
+import { STAT_LABELS } from "@/lib/const/const";
+import { Item, ItemStats } from "@/types/datadragon";
 
 interface Props {
     build: (Item | null)[];
@@ -40,7 +41,7 @@ export default function StatsRecap({ build }: Props) {
             <div className="grid grid-cols-4 gap-2 text-sm">
                 {Object.entries(totalStats).map(([stat, value]) => (
                     <div key={stat} className="rounded bg-zinc-100 p-2 dark:bg-zinc-800">
-                        {stat}: <strong>{value}</strong>
+                        {STAT_LABELS[stat as keyof ItemStats] ?? stat}: <strong>{value}</strong>
                     </div>
                 ))}
             </div>
