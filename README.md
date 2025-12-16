@@ -25,7 +25,7 @@ Builds Page
 ![home](./public/builds.png)
 
 ## Tech stack
-**Framework**: NextJS + Typescript
+**Framework**: NextJS 16 + Typescript
 
 **Styling**: Tailwind
 
@@ -40,19 +40,19 @@ Builds Page
 ---
 
 ## Struttura delle pagine
-```
+```bash
 /
 ├─ app/
 │  ├─ page.tsx                # Home
 │  │
 │  ├─ champions/
 │  │  ├─ page.tsx
-│  │  └─ [cahmpionId]/
+│  │  └─ [championId]/
 │  │     └─ page.tsx
 │  │
 │  ├─ items/
 │  │  ├─ page.tsx
-│  │  └─ [id]/
+│  │  └─ [itemId]/
 │  │     └─ page.tsx
 │  │
 │  ├─ builds/
