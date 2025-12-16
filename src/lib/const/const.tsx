@@ -15,5 +15,33 @@ export const STAT_LABELS: Partial<Record<keyof ItemStats, string>> = {
     FlatSpellBlockMod: "Magic Resist",
     PercentLifeStealMod: "Life Steal %",
     FlatHPRegenMod: "Health Regen",
-    PercentMovementSpeedMod: "Move Speed %"
+    PercentMovementSpeedMod: "Move Speed %",
 };
+
+export const ITEM_GROUPS: Record<string, string[]> = {
+    Annul: ["Verdant Barrier", "Banshee's Veil", "Edge of Night"],
+    Blight: ["Abyssal Mask", "Blighting Jewel", "Bloodletter's Curse", "Cryptbloom", "Terminus", "Void Staff"],
+    Boot: [
+        "Berserker's Greaves",
+        "Boots",
+        "Boots of Swiftness",
+        "Ionian Boots of Lucidity",
+        "Mercury's Treads",
+        "Plated Steelcaps",
+        "Slightly Magical Boots",
+        "Sorcerer's Shoes",
+        "Symbiotic Soles",
+        "Synchronized Souls",
+        "Zephyr",
+    ],
+};
+
+export const ITEM_TO_GROUP: Record<string, string> = Object.entries(ITEM_GROUPS).reduce(
+    (acc, [group, items]) => {
+        items.forEach((itemName) => {
+            acc[itemName] = group;
+        });
+        return acc;
+    },
+    {} as Record<string, string>,
+);

@@ -3,9 +3,9 @@ import { Item } from "@/types/datadragon";
 import { useState } from "react";
 import BuildSlots from "./BuildSlots";
 import StatsRecap from "./StatsRecap";
-//import ItemList from "./ItemList";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import ItemList from "@/app/items/_components/ItemList";
+import { ITEM_TO_GROUP } from "@/lib/const/const";
 
 interface Props {
     items: Item[];
@@ -18,7 +18,15 @@ function BuildConfigurator({ items }: Props) {
     const [builds, setBuilds] = useLocalStorage<(Item | null)[][]>(STORAGE_KEY, Array(MAX_BUILDS).fill(Array(6).fill(null)));
     const [currentBuildIndex, setCurrentBuildIndex] = useState(0);
 
+    const usedGroups = new Set<string>();
+
+    const isItemDisabled = (item: Item) => {
+        const group = ITEM_TO_GROUP[item.name];
+        return group && usedGroups.has(group);
+    };
+
     const addItem = (item: Item, index: number) => {
+        if (isItemDisabled(item)) return;
         setBuilds((prev) => {
             const copy = [...prev];
             const buildCopy = [...copy[currentBuildIndex]];
@@ -41,8 +49,14 @@ function BuildConfigurator({ items }: Props) {
     const switchBuild = (index: number) => setCurrentBuildIndex(index);
     const currentBuild = builds[currentBuildIndex];
 
+    currentBuild.forEach((item) => {
+        if (!item) return;
+        const group = ITEM_TO_GROUP[item.name];
+        if (group) usedGroups.add(group);
+    });
+
     return (
-        <div className="flex flex-col gap-8 w-6xl">
+        <div className="flex w-6xl flex-col gap-8">
             <div className="rounded-xl bg-white p-6 shadow dark:bg-zinc-900">
                 {/* Selettore build */}
                 <div className="mb-4 flex gap-4">
@@ -67,7 +81,7 @@ function BuildConfigurator({ items }: Props) {
                 <StatsRecap build={currentBuild} />
             </div>
 
-            <ItemList itemlist={items} />
+            <ItemList itemlist={items} usedGroups={usedGroups} onAddItem={addItem} />
         </div>
     );
 }
