@@ -26,6 +26,7 @@ body {
 }
 attention {
     font-size: large;
+    color: #978c73;
 }
 healing {
     color: #357947;
@@ -59,4 +60,19 @@ scaleMana {
 }
 shield {
     color: #307e81;
+}
+gold {
+    color: #876a29;
+}
+attackSpeed {
+    color: #a08a48;
+}
+OnHit {
+    color: #978c73;
+}
+rarityLegendary {
+    color: #978c73;
+}
+trueDamage {
+    color: #819889;
 }
