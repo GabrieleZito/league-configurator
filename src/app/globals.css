@@ -33,6 +33,9 @@ healing {
 physicalDamage {
     color: #853611;
 }
+scaleAD {
+    color: #93561d;
+}
 passive {
     color: #938971;
 }
@@ -50,4 +53,10 @@ keyword {
 }
 scaleAp {
     color: #4b428c;
+}
+scaleMana {
+    color: #0f5f7f;
+}
+shield {
+    color: #307e81;
 }
