@@ -38,7 +38,12 @@ export default function ChampionCard({ champion, onClose }: Props) {
                             </span>
                         ))}
                     </div>
-                    <Link href={`/champions/${champion.id}`}>Details</Link>
+                    <Link
+                        href={`/champions/${champion.id}`}
+                        className="mt-6 inline-flex items-center justify-center rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-400 transition hover:border-amber-400 hover:bg-amber-500/20 hover:text-amber-300 focus:ring-2 focus:ring-amber-500/40 focus:outline-none"
+                    >
+                        Details →
+                    </Link>
                 </div>
             )}
         </div>

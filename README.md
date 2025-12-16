@@ -1,4 +1,4 @@
-# League Configurator
+# League Configurator - [Link](https://league-configurator.vercel.app)
 
 Voglio una piattaforma in cui poter trovare tutte le informazioni che mi servono su League of Legends, accedere alle abilità dei campioni e alle statistiche degli oggetti in modo facile e poter provare la mia build prima della prossima partita.
 
