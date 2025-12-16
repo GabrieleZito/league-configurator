@@ -28,3 +28,42 @@ Builds Page
 - Client components per renderizzare componenti che richiedono interattività
 - route di campioni e items generate staticamente con useStaticParams
 ---
+
+## Struttura delle pagine
+```
+/
+├─ app/
+│  ├─ page.tsx                # Home
+│  │
+│  ├─ champions/
+│  │  ├─ page.tsx
+│  │  └─ [cahmpionId]/
+│  │     └─ page.tsx
+│  │
+│  ├─ items/
+│  │  ├─ page.tsx
+│  │  └─ [id]/
+│  │     └─ page.tsx
+│  │
+│  ├─ builds/
+│  │  └─ page.tsx
+│  │
+│  ├─ layout.tsx
+│  └─ globals.css
+│
+├─ lib/
+│  ├─ api/
+│  │  └─ datadragon.ts
+│  └─ const/
+│     └─ const.ts
+│
+├─ hooks/
+│  └─ useLocalStorage.ts
+│
+├─ components/
+│  ├─ buildConfigurator.tsx
+│  └─ ...
+│
+└─ types/
+   └─ datadragon.ts
+```
