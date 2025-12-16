@@ -22,7 +22,7 @@ export default async function page({ params }: { params: Props }) {
     if (!champion) {
         return notFound();
     }
-    console.log(champion);
+    //console.log(champion);
     return (
         <div className="mx-auto max-w-6xl px-6 py-12">
             {/* HERO */}
@@ -69,7 +69,7 @@ export default async function page({ params }: { params: Props }) {
                 <h2 className="mb-4 text-2xl font-semibold">Abilities</h2>
 
                 {/* Passive */}
-                <div className="mb-6 flex gap-4">
+                <div className="mb-6 flex items-start gap-4">
                     <Image
                         src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${champion.passive.image.full}`}
                         width={48}
@@ -78,7 +78,8 @@ export default async function page({ params }: { params: Props }) {
                     />
                     <div>
                         <h3 className="font-semibold">{champion.passive.name} (Passive)</h3>
-                        <p className="text-sm">{champion.passive.description}</p>
+                        <p dangerouslySetInnerHTML={{ __html: champion.passive.description }} />
+                        {/* <p className="text-sm">{champion.passive.description}</p> */}
                     </div>
                 </div>
 
@@ -94,7 +95,7 @@ export default async function page({ params }: { params: Props }) {
                             />
                             <div>
                                 <h3 className="font-semibold">{spell.name}</h3>
-                                <p className="text-sm">{spell.description}</p>
+                                <p className="text-sm" dangerouslySetInnerHTML={{ __html: spell.description }} />
                             </div>
                         </div>
                     ))}
